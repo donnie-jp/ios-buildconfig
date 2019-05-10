@@ -104,7 +104,7 @@ platform :ios do
     sh 'launchctl remove com.apple.CoreSimulator.CoreSimulatorService || true'
     stg_lint
 
-    puts "generate documenation for #{module_name} version #{release_tag}"
+    puts "generate documentation for #{module_name} version #{release_tag}"
     documentation(
       module_name: module_name,
       module_version: release_tag
