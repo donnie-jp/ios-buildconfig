@@ -168,5 +168,10 @@ platform :ios do
   lane :format_objc do |options|
     apply_codestyle(options)
   end
+
+  desc "Upload folder to FTPS host"
+  lane :upload_folder do |options|
+    upload_docs(options)
+  end
 end
 # vim:syntax=ruby:et:sts=2:sw=2:ts=2:ff=unix:
