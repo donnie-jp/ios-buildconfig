@@ -20,7 +20,7 @@ module Fastlane
       # remove all files recursively at ftp path
       def self.rm_r (ftp, path)
         if remote_item_is_file?(ftp, path)
-          UI.message "Delete file #{path}"
+          #UI.message "Delete file #{path}"
           ftp.delete(path)
         else
           #UI.message "Change FTP folder to #{path}"
@@ -75,8 +75,10 @@ module Fastlane
         rescue
           # TODO: folder exists - need to empty contents and delete folder
           # before uploading files
-          UI.message "Remote folder #{folder} already exists so deleting it now."
+          UI.message "Remote folder #{folder} already exists so deleting it now..."
           rm_r(ftp, "#{ftproot}/#{folder}")
+          UI.message "After deleting #{ftproot}/#{folder} the remote dir is #{ftp.pwd}"
+          ftp.chdir(ftproot)
           ftp.mkdir(folder)
         end
 
@@ -87,7 +89,7 @@ module Fastlane
           else
             File.open(name) { |file|
               #ftp.storbinary("STOR #{name}", file, 1024)
-              UI.message 'Put file ' + name
+              #UI.message 'Put file ' + name
               ftp.putbinaryfile(file, name)
             }
           end
