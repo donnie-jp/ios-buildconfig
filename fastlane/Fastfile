@@ -169,8 +169,8 @@ platform :ios do
     apply_codestyle(options)
   end
 
-  desc "Upload folder to FTPS host"
-  lane :upload_folder do |options|
+  desc "Upload documentation to FTP(S) host"
+  lane :upload_docs_ftp do |options|
     upload_docs(options)
   end
 end
